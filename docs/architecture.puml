@@ -1,0 +1,144 @@
+@startuml TeamSync Pro Architecture
+
+' Styling
+skinparam backgroundColor #FFFFFF
+skinparam handwritten false
+skinparam monochrome false
+skinparam shadowing false
+skinparam defaultFontName "Arial"
+skinparam sequence {
+    ArrowColor #0071FF
+    LifeLineBorderColor #0071FF
+    ParticipantBorderColor #0071FF
+}
+
+' Title
+title TeamSync Pro - System Architecture
+
+' Components
+package "Frontend (Next.js)" {
+    [Next.js App Router] as Router
+    
+    package "Core Components" {
+        [Layout Components] as Layout
+        [UI Components] as UI
+        [Section Components] as Sections
+        note right of UI
+            - Button
+            - Input
+            - Modal
+            - Card
+            - Forms
+        end note
+    }
+    
+    package "Pages" {
+        [Home Page] as Home
+        [Activities Page] as Activities
+        [Events Page] as Events
+        [Blog Page] as Blog
+        [About Page] as About
+        [Contact Page] as Contact
+    }
+    
+    package "Features" {
+        [Authentication] as Auth
+        [Team Management] as TeamMgmt
+        [Activity Booking] as Booking
+        [Analytics Dashboard] as Analytics
+        [User Profiles] as Profiles
+    }
+}
+
+package "Backend (Directus)" {
+    database "PostgreSQL" {
+        [Collections] as DB
+        note right of DB
+            - Users
+            - Teams
+            - Activities
+            - Events
+            - Bookings
+            - Analytics
+            - Blog Posts
+        end note
+    }
+    
+    [Directus API] as API
+    [Authentication Service] as AuthService
+    [File Storage] as Storage
+    [Webhooks] as Webhooks
+}
+
+package "External Services" {
+    [Email Service] as Email
+    [Payment Gateway] as Payment
+    [Analytics Service] as AnalyticsService
+    [CDN] as CDN
+}
+
+' Relationships
+Router --> Layout
+Layout --> UI
+Layout --> Sections
+
+' Page Dependencies
+Home --> UI
+Activities --> UI
+Events --> UI
+Blog --> UI
+About --> UI
+Contact --> UI
+
+' Feature Dependencies
+Auth --> AuthService
+TeamMgmt --> API
+Booking --> API
+Analytics --> AnalyticsService
+Profiles --> API
+
+' Backend Relationships
+API --> DB
+AuthService --> DB
+Storage --> CDN
+API --> Webhooks
+
+' External Service Integration
+API --> Email
+API --> Payment
+API --> AnalyticsService
+
+' User Flow
+actor User
+User --> Router : Visits Site
+Router --> Auth : Check Auth
+Auth --> AuthService : Validate
+AuthService --> DB : Query User
+DB --> AuthService : Return Data
+AuthService --> Auth : Auth Status
+Auth --> Router : Allow/Deny Access
+
+' Data Flow
+User --> Activities : Browse Activities
+Activities --> API : Fetch Data
+API --> DB : Query
+DB --> API : Return Data
+API --> Activities : Display Data
+
+' Booking Flow
+User --> Booking : Book Activity
+Booking --> API : Create Booking
+API --> Payment : Process Payment
+Payment --> API : Confirm Payment
+API --> DB : Store Booking
+API --> Email : Send Confirmation
+
+' Analytics Flow
+Analytics --> AnalyticsService : Track Events
+AnalyticsService --> DB : Store Analytics
+Analytics --> API : Fetch Reports
+API --> DB : Query Analytics
+DB --> API : Return Data
+API --> Analytics : Display Reports
+
+@enduml 

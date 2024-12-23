@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TeamSync Pro
 
-## Getting Started
+A modern team building and event management platform built with Next.js 13+ and Directus.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🎨 Modern, Apple-inspired UI/UX
+- 🚀 Built with Next.js 13+ App Router
+- 💾 Directus Headless CMS Integration
+- 🎯 Team Building Activities Management
+- 📅 Event Scheduling and Booking
+- 📊 Analytics Dashboard
+- 🔐 Secure Authentication
+- 💳 Payment Processing
+- 📱 Responsive Design
+- ⚡ Optimized Performance
+
+## Tech Stack
+
+- **Frontend**: Next.js 13+, React, TypeScript
+- **Styling**: Tailwind CSS, Framer Motion
+- **Backend**: Directus Headless CMS
+- **Database**: PostgreSQL
+- **Deployment**: Railway
+
+## Quick Start
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/harshatrebound/dummy.git
+   cd dummy
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Create a `.env` file in the root directory:
+   ```env
+   NEXT_PUBLIC_DIRECTUS_URL=your_directus_url
+   NEXT_PUBLIC_API_TOKEN=your_directus_api_token
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Deployment on Railway
+
+1. Create a new project on Railway
+2. Connect your GitHub repository
+3. Add the following environment variables:
+   - `NEXT_PUBLIC_DIRECTUS_URL`
+   - `NEXT_PUBLIC_API_TOKEN`
+4. Deploy!
+
+## Project Structure
+
+```
+├── docs/               # Documentation
+├── public/            # Static assets
+├── src/
+│   ├── app/          # Next.js 13 app directory
+│   ├── components/   # React components
+│   │   ├── layout/   # Layout components
+│   │   ├── sections/ # Page sections
+│   │   └── ui/       # UI components
+│   └── lib/          # Utilities and helpers
+├── .env              # Environment variables
+└── tailwind.config.js # Tailwind configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Run development server: `yarn dev`
+- Build for production: `yarn build`
+- Start production server: `yarn start`
+- Run linter: `yarn lint`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contributing
 
-## Learn More
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
